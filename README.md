@@ -1,9 +1,9 @@
-# ziggy
+
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/27973237?s=300&v=4" alt="Zig" width="400">
 </p> 
 
-## (A) calc.zig
+# (A) calc.zig
 
 ## Program Overview
 The [`calc.zig`](./calc.zig) program is a simple calculator application written in the Zig programming language. It allows you to perform basic arithmetic operations such as addition, subtraction, multiplication, division, and quotient(integer) division all in one. The program takes two user-provided integer inputs and then displays the results of these operations.
@@ -51,7 +51,7 @@ Execution time(depends on your typing speed and time you took to enter numbers):
 - The execution time displayed depends on the time you take to enter the numbers and your typing speed.
 
 
-## (B) prime.zig
+# (B) prime.zig
 
 ## Program Overview
 The [`prime.zig`](./prime.zig) program is designed to work with prime numbers. It offers functionalities to check if a given number is prime, find the nth prime number, print the first N prime numbers, and find the position of a specific prime number in the sequence of all prime numbers. The program uses a variety of functions and logic to achieve these tasks.
