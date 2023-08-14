@@ -79,12 +79,12 @@ pub fn main() !void {
                 std.debug.print("The first {} prime numbers are: ", .{n});
                 primes(n);
 
-                std.debug.print("The \n{}th prime number is: {}\n", .{ N, nthPrime(N) });
+                std.debug.print("\nThe {}th prime number is: {}\n", .{ N, nthPrime(N) });
 
                 if (posPrime(posPrimeValue)) {
                     std.debug.print("{} is a prime number.\n", .{posPrimeValue});
                 } else {
-                    std.debug.print("{} is a composite number.\n", .{posPrimeValue});
+                    std.debug.print("{} is a composite(not a prime) number.\n", .{posPrimeValue});
                 }
             } else {
                 std.debug.print("Invalid input for checking if a number is prime\n", .{});
