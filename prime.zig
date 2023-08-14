@@ -60,6 +60,7 @@ pub fn posPrime(n: u64) bool {
 pub fn main() !void {
     var input_buffer: [4096]u8 = undefined;
     const start = time.milliTimestamp();
+
     std.debug.print("Enter the number of prime numbers you want to print: ", .{});
     const input_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
     if (input_result) |input| {
@@ -75,12 +76,16 @@ pub fn main() !void {
             if (pos_prime_result) |pos_prime_input| {
                 var posPrimeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, pos_prime_input, " \n\r\t"), 10);
 
-                std.debug.print("First {} prime numbers are: ", .{n});
+                std.debug.print("The first {} prime numbers are: ", .{n});
                 primes(n);
 
-                std.debug.print("\n{}th prime number is: {}\n", .{ N, nthPrime(N) });
+                std.debug.print("The \n{}th prime number is: {}\n", .{ N, nthPrime(N) });
 
-                std.debug.print("Is {} a prime number? {}\n", .{ posPrimeValue, posPrime(posPrimeValue) });
+                if (posPrime(posPrimeValue)) {
+                    std.debug.print("{} is a prime number.\n", .{posPrimeValue});
+                } else {
+                    std.debug.print("{} is a composite number.\n", .{posPrimeValue});
+                }
             } else {
                 std.debug.print("Invalid input for checking if a number is prime\n", .{});
                 return;
@@ -93,7 +98,8 @@ pub fn main() !void {
         std.debug.print("Invalid input for n\n", .{});
         return;
     }
+
     const end = time.milliTimestamp();
     const elapsedMillis = end - start;
-    std.debug.print("Total execution time (depends on your typing speed and time you took to enter numbers): {} milliseconds\n", .{elapsedMillis});
+    std.debug.print("Total execution time: {} milliseconds\n", .{elapsedMillis});
 }
