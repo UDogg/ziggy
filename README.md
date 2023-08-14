@@ -100,7 +100,7 @@ Total execution time: 0 milliseconds
 
 Feel free to experiment with different input values and explore the program's functionalities!  
 Written by  
-[Utkarsh "UC" Choudhary](https://threejs-udogg.vercel.app])
+[Utkarsh "UC" Choudhary](https://threejs-udogg.vercel.app/)
 <p align="left">
   <a href="https://github.com/UDogg">
     <img src="https://www.cnet.com/a/img/resize/e547a2e4388fcc5ab560f821ac170a59b9fb0143/hub/2021/12/13/d319cda7-1ddd-4855-ac55-9dcd9ce0f6eb/unnamed.png?auto=webp&fit=crop&height=1200&width=1200" alt="UDogg" width="150">
