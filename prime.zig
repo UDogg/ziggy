@@ -61,7 +61,7 @@ pub fn main() !void {
     if (input_result) |input| {
         var n: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, input, " \n\r\t"), 10);
 
-        std.debug.print("Enter the value of N: ", .{});
+        std.debug.print("Enter the value of N(Nth prime number you wish to print): ", .{});
         const n_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
         if (n_result) |n_input| {
             var N: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, n_input, " \n\r\t"), 10);
@@ -80,5 +80,5 @@ pub fn main() !void {
     }
     const end = time.milliTimestamp();
     const elapsedMillis = end - start;
-    std.debug.print("Execution time(depends on your typing speed and time you took to enter numbers): {} ms\n", .{elapsedMillis});
+    std.debug.print("Total execution time(depends on your typing speed and time you took to enter numbers): {} milliseconds\n", .{elapsedMillis});
 }
