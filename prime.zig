@@ -53,10 +53,6 @@ pub fn primes(n: u64) void {
     }
 }
 
-// pub fn posPrime(n: u64) bool {
-//     return isPrime(n);
-// }
-
 pub fn findPrimePosition(prime: u64) u64 {
     var count: u64 = 0;
     var position: u64 = 0;
@@ -95,16 +91,16 @@ pub fn main() !void {
             if (prime_result) |prime_input| {
                 var primeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, prime_input, " \n\r\t"), 10);
 
+                std.debug.print("The first {} prime numbers are: ", .{n});
+                primes(n);
+
+                std.debug.print("\nThe {}th prime number is: {}\n", .{ N, nthPrime(N) });
+
                 // Check if the entered number is prime
                 if (!isPrime(primeValue)) {
                     std.debug.print("{} is not a prime number.\n", .{primeValue});
                     return;
                 }
-
-                std.debug.print("The first {} prime numbers are: ", .{n});
-                primes(n);
-
-                std.debug.print("\nThe {}th prime number is: {}\n", .{ N, nthPrime(N) });
 
                 var position = findPrimePosition(primeValue);
                 if (position == 0) {
