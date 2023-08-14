@@ -108,5 +108,5 @@ Written by
 </p>
 
 
-Written in Ziglang  
+Written with ❤️ and Ziglang  
 ![Zig](https://avatars.githubusercontent.com/u/27973237?s=160&v=4)
