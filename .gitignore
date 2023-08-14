@@ -1,0 +1,9 @@
+*.exe
+*.out
+
+*.o
+
+*.zig
+
+*.DS_Store
+*~

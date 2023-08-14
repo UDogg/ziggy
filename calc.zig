@@ -5,24 +5,24 @@ const stdin = std.io.getStdIn().reader();
 
 var q: f64 = 0.0;
 
-fn add(x: i64, y: i64) i64 {
+fn add(x: f64, y: f64) f64 {
     return x + y;
 }
 
-fn subtract(x: i64, y: i64) i64 {
+fn subtract(x: f64, y: f64) f64 {
     return x - y;
 }
 
-fn multiply(x: i64, y: i64) i64 {
+fn multiply(x: f64, y: f64) f64 {
     return x * y;
 }
 
-fn quotient(x: i64, y: i64) i64 {
-    return @divTrunc(x, y);
+fn quotient(x: f64, y: f64) f64 {
+    return x / y;
 }
 
-fn divide(x: i64, y: i64) f64 {
-    q = @intToFloat(f64, x) / @intToFloat(f64, y);
+fn divide(x: f64, y: f64) f64 {
+    q = x / y;
     return q;
 }
 
@@ -30,14 +30,14 @@ pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
     _ = stdout;
     const start = time.milliTimestamp();
-    var x: i64 = 0;
-    var y: i64 = 0;
+    var x: f64 = 0.0;
+    var y: f64 = 0.0;
 
     std.debug.print("Enter a number: ", .{});
     var input_buffer: [4096]u8 = undefined;
     const input_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
     if (input_result) |input| {
-        x = try std.fmt.parseInt(i64, std.mem.trim(u8, input, " \n\r\t"), 10);
+        x = try std.fmt.parseFloat(f64, std.mem.trim(u8, input, " \n\r\t"));
     } else {
         std.debug.print("Invalid input\n", .{});
         return;
@@ -47,7 +47,7 @@ pub fn main() !void {
     var input2_buffer: [4096]u8 = undefined;
     const input2_result = try stdin.readUntilDelimiterOrEof(&input2_buffer, '\n');
     if (input2_result) |input2| {
-        y = try std.fmt.parseInt(i64, std.mem.trim(u8, input2, " \n\r\t"), 10);
+        y = try std.fmt.parseFloat(f64, std.mem.trim(u8, input2, " \n\r\t"));
     } else {
         std.debug.print("Invalid input\n", .{});
         return;
