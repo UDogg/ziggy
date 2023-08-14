@@ -3,13 +3,13 @@ const time = @import("std").time;
 const fs = @import("std").fs;
 const stdin = std.io.getStdIn().reader();
 
-pub fn isPrime(n: u32) bool {
+pub fn isPrime(n: u64) bool {
     if (n <= 1) return false;
     if (n <= 3) return true;
     if (n % 2 == 0) return false;
     if (n % 3 == 0) return false;
 
-    var i: u32 = 5;
+    var i: u64 = 5;
     while (i * i <= n) {
         if (n % i == 0) return false;
         if (n % (i + 2) == 0) return false;
@@ -18,19 +18,38 @@ pub fn isPrime(n: u32) bool {
     return true;
 }
 
-pub fn primes(n: u32) void {
-    var count: u32 = 0;
-    var i: u32 = 2;
+pub fn nthPrime(n: u64) u64 {
+    var count: u64 = 0;
+    var prime: u64 = 2;
+    var i: u64 = 2;
     while (count < n) {
         if (isPrime(i)) {
-            std.debug.print("{}, ", .{i});
+            prime = i;
             count += 1;
         }
-        if (i == 2) {
-            i += 1;
-        } else {
-            i += 2;
+        i += 1;
+    }
+    return prime;
+}
+
+pub fn primes(n: u64) void {
+    var count: u64 = 0;
+    var i: u64 = 2;
+    var isLastPrime: bool = false;
+
+    while (count < n) {
+        if (isPrime(i)) {
+            if (count == n - 1) {
+                isLastPrime = true;
+            }
+            if (isLastPrime) {
+                std.debug.print("{}", .{i});
+            } else {
+                std.debug.print("{}, ", .{i});
+            }
+            count += 1;
         }
+        i += 1;
     }
 }
 
@@ -40,11 +59,23 @@ pub fn main() !void {
     std.debug.print("Enter the number of prime numbers you want to print: ", .{});
     const input_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
     if (input_result) |input| {
-        var n: u32 = try std.fmt.parseInt(u32, std.mem.trim(u8, input, " \n\r\t"), 10);
-        std.debug.print("First {} prime numbers are: ", .{n});
-        primes(n);
+        var n: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, input, " \n\r\t"), 10);
+
+        std.debug.print("Enter the value of N: ", .{});
+        const n_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
+        if (n_result) |n_input| {
+            var N: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, n_input, " \n\r\t"), 10);
+
+            std.debug.print("First {} prime numbers are: ", .{n});
+            primes(n);
+
+            std.debug.print("\n{}th prime number is: {}\n", .{ N, nthPrime(N) });
+        } else {
+            std.debug.print("Invalid input for N\n", .{});
+            return;
+        }
     } else {
-        std.debug.print("Invalid input\n", .{});
+        std.debug.print("Invalid input for n\n", .{});
         return;
     }
     const end = time.milliTimestamp();
