@@ -53,8 +53,27 @@ pub fn primes(n: u64) void {
     }
 }
 
-pub fn posPrime(n: u64) bool {
-    return isPrime(n);
+// pub fn posPrime(n: u64) bool {
+//     return isPrime(n);
+// }
+
+pub fn findPrimePosition(prime: u64) u64 {
+    var count: u64 = 0;
+    var position: u64 = 0;
+    var i: u64 = 2;
+
+    while (count < prime) {
+        if (isPrime(i)) {
+            count += 1;
+            if (i == prime) {
+                position = count;
+                break;
+            }
+        }
+        i += 1;
+    }
+
+    return position;
 }
 
 pub fn main() !void {
@@ -71,23 +90,30 @@ pub fn main() !void {
         if (n_result) |n_input| {
             var N: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, n_input, " \n\r\t"), 10);
 
-            std.debug.print("Enter a value to check if it is a prime number: ", .{});
-            const pos_prime_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
-            if (pos_prime_result) |pos_prime_input| {
-                var posPrimeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, pos_prime_input, " \n\r\t"), 10);
+            std.debug.print("Enter a prime number to find its position: ", .{});
+            const prime_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
+            if (prime_result) |prime_input| {
+                var primeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, prime_input, " \n\r\t"), 10);
+
+                // Check if the entered number is prime
+                if (!isPrime(primeValue)) {
+                    std.debug.print("{} is not a prime number.\n", .{primeValue});
+                    return;
+                }
 
                 std.debug.print("The first {} prime numbers are: ", .{n});
                 primes(n);
 
                 std.debug.print("\nThe {}th prime number is: {}\n", .{ N, nthPrime(N) });
 
-                if (posPrime(posPrimeValue)) {
-                    std.debug.print("{} is a prime number.\n", .{posPrimeValue});
+                var position = findPrimePosition(primeValue);
+                if (position == 0) {
+                    std.debug.print("The entered number is not a prime number.\n", .{});
                 } else {
-                    std.debug.print("{} is a composite(not a prime) number.\n", .{posPrimeValue});
+                    std.debug.print("The position of {} in the set of all prime numbers is {}\n", .{ primeValue, position });
                 }
             } else {
-                std.debug.print("Invalid input for checking if a number is prime\n", .{});
+                std.debug.print("Invalid input for finding the position of a prime number\n", .{});
                 return;
             }
         } else {
