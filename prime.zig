@@ -53,6 +53,10 @@ pub fn primes(n: u64) void {
     }
 }
 
+pub fn posPrime(n: u64) bool {
+    return isPrime(n);
+}
+
 pub fn main() !void {
     var input_buffer: [4096]u8 = undefined;
     const start = time.milliTimestamp();
@@ -61,15 +65,26 @@ pub fn main() !void {
     if (input_result) |input| {
         var n: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, input, " \n\r\t"), 10);
 
-        std.debug.print("Enter the value of N(Nth prime number you wish to print): ", .{});
+        std.debug.print("Enter the value of N (Nth prime number you wish to print): ", .{});
         const n_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
         if (n_result) |n_input| {
             var N: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, n_input, " \n\r\t"), 10);
 
-            std.debug.print("First {} prime numbers are: ", .{n});
-            primes(n);
+            std.debug.print("Enter a value to check if it is a prime number: ", .{});
+            const pos_prime_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
+            if (pos_prime_result) |pos_prime_input| {
+                var posPrimeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, pos_prime_input, " \n\r\t"), 10);
 
-            std.debug.print("\n{}th prime number is: {}\n", .{ N, nthPrime(N) });
+                std.debug.print("First {} prime numbers are: ", .{n});
+                primes(n);
+
+                std.debug.print("\n{}th prime number is: {}\n", .{ N, nthPrime(N) });
+
+                std.debug.print("Is {} a prime number? {}\n", .{ posPrimeValue, posPrime(posPrimeValue) });
+            } else {
+                std.debug.print("Invalid input for checking if a number is prime\n", .{});
+                return;
+            }
         } else {
             std.debug.print("Invalid input for N\n", .{});
             return;
@@ -80,5 +95,5 @@ pub fn main() !void {
     }
     const end = time.milliTimestamp();
     const elapsedMillis = end - start;
-    std.debug.print("Total execution time(depends on your typing speed and time you took to enter numbers): {} milliseconds\n", .{elapsedMillis});
+    std.debug.print("Total execution time (depends on your typing speed and time you took to enter numbers): {} milliseconds\n", .{elapsedMillis});
 }
