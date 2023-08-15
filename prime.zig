@@ -43,7 +43,7 @@ pub fn primes(n: u64) void {
                 isLastPrime = true;
             }
             if (isLastPrime) {
-                std.debug.print("{}", .{i});
+                std.debug.print("{}]", .{i});
             } else {
                 std.debug.print("{}, ", .{i});
             }
@@ -86,12 +86,12 @@ pub fn main() !void {
         if (n_result) |n_input| {
             var N: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, n_input, " \n\r\t"), 10);
 
-            std.debug.print("Enter a prime number to find its position: ", .{});
+            std.debug.print("Enter a prime number to find its position in the set of all prime numbers: ", .{});
             const prime_result = try stdin.readUntilDelimiterOrEof(&input_buffer, '\n');
             if (prime_result) |prime_input| {
                 var primeValue: u64 = try std.fmt.parseInt(u64, std.mem.trim(u8, prime_input, " \n\r\t"), 10);
 
-                std.debug.print("The first {} prime numbers are: ", .{n});
+                std.debug.print("The first {} prime numbers are: [", .{n});
                 primes(n);
 
                 std.debug.print("\nThe {}th prime number is: {}\n", .{ N, nthPrime(N) });
