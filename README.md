@@ -99,6 +99,15 @@ Total execution time: 0 milliseconds
 - The execution time displayed may vary depending on your system's performance and user input.
 
 Feel free to experiment with different input values and explore the program's functionalities!  
+
+  
+# (C) game.zig
+**In development**
+# (D) net.zig
+**In development**
+Written with ❤️ and Ziglang  
+![Zig](https://avatars.githubusercontent.com/u/27973237?s=160&v=4)  
+
 Written by  
 [Utkarsh "UC" Choudhary](https://threejs-udogg.vercel.app/)
 <p align="left">
@@ -106,10 +115,3 @@ Written by
     <img src="https://www.cnet.com/a/img/resize/e547a2e4388fcc5ab560f821ac170a59b9fb0143/hub/2021/12/13/d319cda7-1ddd-4855-ac55-9dcd9ce0f6eb/unnamed.png?auto=webp&fit=crop&height=1200&width=1200" alt="UDogg" width="150">
   </a>
 </p>
-
-# (C) game.zig
-**In development**
-# (D) net.zig
-**In development**
-Written with ❤️ and Ziglang  
-![Zig](https://avatars.githubusercontent.com/u/27973237?s=160&v=4)
