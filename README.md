@@ -102,9 +102,9 @@ Feel free to experiment with different input values and explore the program's fu
 
   
 # (C) game.zig
-**In development**
+**In development** freecodecamp guy
 # (D) net.zig
-**In development**
+**In development**  
 Written with ❤️ and Ziglang  
 ![Zig](https://avatars.githubusercontent.com/u/27973237?s=160&v=4)  
 
